@@ -7,7 +7,7 @@ class Pessoa:
     __endereco = None
     __email = None
     __telefone = None
-
+    
     def setNome(self,nome):
 
         __nome=nome
