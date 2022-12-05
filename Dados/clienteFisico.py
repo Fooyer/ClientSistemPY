@@ -1,0 +1,1 @@
+# Estrutura de dados para Clientes Físicos (Pessoa Física)
