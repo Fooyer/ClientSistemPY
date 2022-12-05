@@ -1,7 +1,7 @@
 # Classe main de pessoa, todas as outras classes que tem relação com pessoa deverão herdar dessa
 
 
-class Pessoa:
+class pessoa:
 
     __nome = None
     __endereco = None
@@ -10,32 +10,32 @@ class Pessoa:
     
     def setNome(self,nome):
 
-        __nome=nome
+        self.__nome = nome
 
     def getNome(self):
 
-        return __nome
+        return self.__nome
           
     def setEndereco(self,endereco):
 
-        __endereco=endereco
+        self.__endereco = endereco
 
     def getEndereco(self):
 
-        return __endereco
+        return self.__endereco
           
     def setEmail(self,email):
 
-        __email=email
+        self.__email = email
 
     def getEmail(self):
 
-        return __email
+        return self.__email
           
     def setTelefone(self,telefone):
 
-        __telefone=telefone
+        self.__telefone = telefone
 
     def getTelefone(self):
 
-        return __telefone
+        return self.__telefone

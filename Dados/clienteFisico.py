@@ -1,24 +1,24 @@
 # Estrutura de dados para Clientes Físicos (Pessoa Física)
 
-from Dados.pessoa import Pessoa
+from Dados.pessoa import pessoa
 
-class clienteFisico(Pessoa):
+class clienteFisico(pessoa):
     
     __cpf = None
     __dados = []
     
     def setCpf(self,cpf):
 
-        __cpf=cpf
+        self.__cpf=cpf
 
     def getCpf(self):
 
-        return __cpf
+        return self.__cpf
     
     def setDados(self,dados):
 
-        __dados=dados
+        self.__dados=dados
 
     def getDados(self):
 
-        return __dados
+        return self.__dados

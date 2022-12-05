@@ -1,33 +1,34 @@
 # Estrutura de dados para Clientes Jurídicos (Pessoa Jurídica)
 
-from Dados.pessoa import Pessoa
+from Dados.pessoa import pessoa
 
-class clienteJuridico(Pessoa):
+class clienteJuridico(pessoa):
     
     __cnpj = None
-    __inscricaoEstadual = None
     __dados = []
+    __proximoId = 0
     
     def setCnpj(self,cnpj):
 
-        __cnpj=cnpj
+        self.__cnpj=cnpj
 
     def getCnpj(self):
 
-        return __cnpj
-
-    def setInscricaoEstadual(self,inscricaoEstadual):
-
-        __inscricaoEstadual=inscricaoEstadual
-
-    def getInscricaoEstadual(self):
-
-        return __inscricaoEstadual
+        return self.__cnpj
     
-    def setDados(self,dados):
+    def setDados(self):
+        
+        nome = super().getNome()
+        email = super().getEmail()
+        endereco = super().getEndereco()
+        telefone = super().getTelefone()
 
-        __dados=dados
+        dados=nome+"^"+self.__cnpj+"^"+email+"^"+endereco+"^"+telefone
+
+        self.__dados.append(dados)
+
+        self.__proximoId=self.__proximoId + 1
 
     def getDados(self):
 
-        return __dados
+        return self.__dados
