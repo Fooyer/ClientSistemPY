@@ -23,3 +23,11 @@ class clienteJuridico(Pessoa):
     def getInscricaoEstadual(self):
 
         return __inscricaoEstadual
+    
+    def setDados(self,dados):
+
+        __dados=dados
+
+    def getDados(self):
+
+        return __dados

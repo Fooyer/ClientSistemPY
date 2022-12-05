@@ -14,3 +14,11 @@ class clienteFisico(Pessoa):
     def getCpf(self):
 
         return __cpf
+    
+    def setDados(self,dados):
+
+        __dados=dados
+
+    def getDados(self):
+
+        return __dados
