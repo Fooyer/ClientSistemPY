@@ -95,9 +95,9 @@ def programa(pergunta):
 
                 if (classificacao=="1"):
                     
-                    cpnjCliente = input("CNPJ do cliente: ")
+                    cnpjCliente = input("CNPJ do cliente: ")
 
-                    clienteJuridico.setCnpj(cpnjCliente)
+                    clienteJuridico.setCnpj(cnpjCliente)
                     clienteJuridico.setEmail(emailCliente)
                     clienteJuridico.setEndereco(enderecoCliente)
                     clienteJuridico.setNome(nomeCliente)
