@@ -13,77 +13,30 @@ clienteFisico=clienteFisico()
 
 # Função que faz o menu do programa
 
-def programa(pergunta):
+def programa():
 
     while True:
-
-        # Limpar o console do sistema
-        
-        os.system('clear')
-        
-        # Pergunta se deseja sair da execução (perderá todos os dados)
-        
-        if pergunta!=1:
-            sair=input("Deseja Sair?(S/N): ")
-            if sair=="S":
-                return "S"
         
         # Pergunta de qual ação o usuário deseja fazer
          
-        acao = input("Qual ação deseja efetuar? \n\n 1 - Cadastrar novo cliente \n 2 - Excluir cliente \n 3 - Editar cliente \n\n Resposta: ")
+        acao = input("Qual ação deseja efetuar? \n\n 1 - Cadastrar novo cliente \n 2 - Excluir cliente \n 3 - Editar cliente \n 5 - Listar clientes \n 9 - Finalizar Programa\n\n Resposta: ")
 
-        # Match para definir a descrição da ação a apresentar na definição da classificação do cliente
+        if (acao=="9"):
+            return "S"
 
-        match(acao):
-            
-            case "1":
-                
-                descricaoAcao="Cadastrar"
-                
-            case "2":
-                
-                descricaoAcao="Excluir"
-                
-            case "3":
-                
-                descricaoAcao="Editar"
-                
-            case _:
-                
-                print("\nAção Inválida!\n")
-                descricaoAcao = None
-                time.sleep(3)
-                return "N"
+        # Chama função para definir a descricão a apresentar na seleção de classificação do cliente
+
+        descricaoAcao=definirDescricao(acao)
+        if (descricaoAcao==0):
+            return "N"
 
         # Seleção de classificação do Cliente
 
         classificacao = input("\n\n"+descricaoAcao+" cliente: \n\n 1 - Jurídico \n 2 - Físico \n\n Resposta: ")
         print("\n")
-        
-        # Gera os dados da classificação escolhida pelo cliente
 
-        if (classificacao=="1"):
+        # Match da ação seguir caminho de operação informado pelo usuário
 
-            listaClientes=clienteJuridico.getDados()
-
-        if (classificacao=="2"):
-            
-            listaClientes=clienteFisico.getDados()
-        
-        if (listaClientes==None)&(acao!="1"):
-            print("\nNenhum cadastro encontrado!\n")
-            time.sleep(3)
-            return "N"
-        
-        # Apresenta a lista de clientes com a classificação no sistema se a opção não for de cadastro
-
-        if (acao!="1"):       
-            for identificador,cliente in enumerate(listaClientes):
-            
-                print(identificador," - ",cliente)
-
-            print("\n")
-            
         match(acao):
             
             case "1":
@@ -116,24 +69,96 @@ def programa(pergunta):
                     clienteFisico.setTelefone(telefoneCliente)
                     
                     clienteFisico.setDados()
+        
+                os.system("cls")
                     
             case "2":
                 
                 print(acao)
+        
+                os.system("cls")
                 
             case "3":
                 
                 print(acao)
         
-        pergunta=pergunta+1
-        
+                os.system("cls")
 
-# Executa o programa e faz o controle de saída//Pergunta
+            case "5":
+
+                statusCode=imprimirDados(classificacao)
+                
+                if (statusCode==0):
+                    return "N"
+
+# Função para imprimir clientes em tela da classificação informada
+
+def imprimirDados(classificacao):
+    
+    listaClientes = None
+    
+    if (classificacao=="1"):
+
+        listaClientes=clienteJuridico.getDados()
+
+    if (classificacao=="2"):
+                
+        listaClientes=clienteFisico.getDados()
+            
+    if (listaClientes==None):
+        print("\nNenhum cadastro encontrado!\n")
+        time.sleep(3)
+        return 0
+
+    for identificador,cliente in enumerate(listaClientes):
+            
+        print(identificador," - ",cliente)
+
+    print("\n")
+
+    return 1
+
+# Match para definir a descrição da ação a apresentar na definição da classificação do cliente
+
+def definirDescricao(acao):
+
+    match(acao):
+            
+        case "1":
+                
+            descricaoAcao="Cadastrar"
+
+            return descricaoAcao
+                
+        case "2":
+                
+            descricaoAcao="Excluir"
+
+            return descricaoAcao
+                
+        case "3":
+                
+            descricaoAcao="Editar"
+                
+            return descricaoAcao
+
+        case "5":
+            
+            descricaoAcao="Listar"
+
+            return descricaoAcao
+
+        case _:
+                
+            print("\nAção Inválida!\n")
+            time.sleep(3)
+            return 0
+
+# Executa o programa e faz o controle da saída
 
 pergunta=1
 
 while True:
-    sair=programa(pergunta)
-    pergunta=pergunta+1
+    sair=programa()
     if (sair=="S"):
         break
