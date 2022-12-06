@@ -128,7 +128,7 @@ def programa(pergunta):
         pergunta=pergunta+1
         
 
-# Executa o programa e faz o controle de saída
+# Executa o programa e faz o controle de saída//Pergunta
 
 pergunta=1
 
