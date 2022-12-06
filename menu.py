@@ -13,7 +13,7 @@ clienteFisico=clienteFisico()
 
 # Função que faz o menu do programa
 
-def programa():
+def programa(pergunta):
 
     while True:
 
@@ -23,9 +23,10 @@ def programa():
         
         # Pergunta se deseja sair da execução (perderá todos os dados)
         
-        sair=input("Deseja Sair?(S/N): ")
-        if sair=="S":
-            return "S"
+        if pergunta!=1:
+            sair=input("Deseja Sair?(S/N): ")
+            if sair=="S":
+                return "S"
         
         # Pergunta de qual ação o usuário deseja fazer
          
@@ -57,21 +58,32 @@ def programa():
         # Seleção de classificação do Cliente
 
         classificacao = input("\n\n"+descricaoAcao+" cliente: \n\n 1 - Jurídico \n 2 - Físico \n\n Resposta: ")
-
+        print("\n")
+        
         # Gera os dados da classificação escolhida pelo cliente
 
         if (classificacao=="1"):
 
             listaClientes=clienteJuridico.getDados()
 
+        if (classificacao=="2"):
+            
+            listaClientes=clienteFisico.getDados()
+        
+        if (listaClientes==None)&(acao!="1"):
+            print("\nNenhum cadastro encontrado!\n")
+            time.sleep(3)
+            return "N"
+        
         # Apresenta a lista de clientes com a classificação no sistema se a opção não for de cadastro
 
-
-        if (acao!=1):
+        if (acao!="1"):       
             for identificador,cliente in enumerate(listaClientes):
             
                 print(identificador," - ",cliente)
 
+            print("\n")
+            
         match(acao):
             
             case "1":
@@ -92,20 +104,18 @@ def programa():
                     clienteJuridico.setTelefone(telefoneCliente)
 
                     clienteJuridico.setDados()
-                    
-                    dados=clienteJuridico.getDados()
-
-                    for identificador,cliente in enumerate(dados):
-            
-                        print(identificador," - ",cliente)
                 
-                elif (classificacao=="2"):
+                if (classificacao=="2"):
                     
-                    clienteFisico.setCnpj(cpnjCliente)
+                    cpfCliente = input("CPF do cliente: ")
+                    
+                    clienteFisico.setCpf(cpfCliente)
                     clienteFisico.setEmail(emailCliente)
                     clienteFisico.setEndereco(enderecoCliente)
                     clienteFisico.setNome(nomeCliente)
                     clienteFisico.setTelefone(telefoneCliente)
+                    
+                    clienteFisico.setDados()
                     
             case "2":
                 
@@ -115,10 +125,15 @@ def programa():
                 
                 print(acao)
         
+        pergunta=pergunta+1
+        
 
 # Executa o programa e faz o controle de saída
-        
+
+pergunta=1
+
 while True:
-    sair=programa()
+    sair=programa(pergunta)
+    pergunta=pergunta+1
     if (sair=="S"):
         break

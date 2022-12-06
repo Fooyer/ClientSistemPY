@@ -15,9 +15,16 @@ class clienteFisico(pessoa):
 
         return self.__cpf
     
-    def setDados(self,dados):
+    def setDados(self):
 
-        self.__dados=dados
+        nome = super().getNome()
+        email = super().getEmail()
+        endereco = super().getEndereco()
+        telefone = super().getTelefone()
+        
+        dados=nome+"\t"+self.__cpf+"\t"+email+"\t"+endereco+"\t"+telefone
+
+        self.__dados.append(dados)
 
     def getDados(self):
 

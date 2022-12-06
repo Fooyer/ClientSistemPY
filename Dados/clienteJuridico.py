@@ -6,7 +6,6 @@ class clienteJuridico(pessoa):
     
     __cnpj = None
     __dados = []
-    __proximoId = 0
     
     def setCnpj(self,cnpj):
 
@@ -23,11 +22,9 @@ class clienteJuridico(pessoa):
         endereco = super().getEndereco()
         telefone = super().getTelefone()
 
-        dados=nome+"^"+self.__cnpj+"^"+email+"^"+endereco+"^"+telefone
+        dados=nome+"\t"+self.__cnpj+"\t"+email+"\t"+endereco+"\t"+telefone
 
         self.__dados.append(dados)
-
-        self.__proximoId=self.__proximoId + 1
 
     def getDados(self):
 
