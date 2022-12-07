@@ -6,7 +6,7 @@ class clienteJuridico(pessoa):
     
     __cnpj = None
     
-    def __init__(self,nomeCliente,enderecoCliente,emailCliente,telefoneCliente,cnpjCliente,identificador):
+    def __init__(self,nomeCliente,enderecoCliente,emailCliente,telefoneCliente,cnpjCliente,identificador,classificacao):
         
         self.setCnpj(cnpjCliente)
         self.setEmail(emailCliente)
@@ -14,6 +14,7 @@ class clienteJuridico(pessoa):
         self.setNome(nomeCliente)
         self.setTelefone(telefoneCliente)
         self.setIdentificador(identificador)
+        self.setClassificacao(classificacao)
 
     def setCnpj(self,cnpj):
 

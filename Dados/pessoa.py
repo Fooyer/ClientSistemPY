@@ -8,6 +8,7 @@ class pessoa:
     __email = None
     __telefone = None
     __identificador = None
+    __classificacao = None
     
     def setIdentificador(self,identificador):
 
@@ -48,3 +49,11 @@ class pessoa:
     def getTelefone(self):
 
         return self.__telefone
+    
+    def setClassificacao(self,classificacao):
+
+        self.__classificacao = classificacao
+
+    def getClassificacao(self):
+
+        return self.__classificacao

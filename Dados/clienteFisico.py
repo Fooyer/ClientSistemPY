@@ -6,7 +6,7 @@ class clienteFisico(pessoa):
     
     __cpf = None
 
-    def __init__(self,nomeCliente,enderecoCliente,emailCliente,telefoneCliente,cpfCliente,identificador):
+    def __init__(self,nomeCliente,enderecoCliente,emailCliente,telefoneCliente,cpfCliente,identificador,classificacao):
         
         self.setCpf(cpfCliente)
         self.setEmail(emailCliente)
@@ -14,6 +14,7 @@ class clienteFisico(pessoa):
         self.setNome(nomeCliente)
         self.setTelefone(telefoneCliente)
         self.setIdentificador(identificador)
+        self.setClassificacao(classificacao)
     
     def setCpf(self,cpf):
 
