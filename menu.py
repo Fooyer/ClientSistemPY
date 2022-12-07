@@ -185,25 +185,25 @@ def definirDescricao(acao):
             
         case "1":
                 
-            descricaoAcao="Cadastrar cliente: \n\n 1 - Jurídico \n 2 - Físico \n\n 9 - Voltar \n\n Resposta: "
+            descricaoAcao="Cadastrar Cliente: \n\n 1 - Jurídico \n 2 - Físico \n\n 9 - Voltar \n\n Resposta: "
 
             return descricaoAcao
                 
         case "2":
                 
-            descricaoAcao="Excluir cliente: \n\n 1 - Jurídico \n 2 - Físico \n\n 9 - Voltar \n\n Resposta: "
+            descricaoAcao="Excluir Cliente: \n\n 1 - Jurídico \n 2 - Físico \n\n 9 - Voltar \n\n Resposta: "
 
             return descricaoAcao
                 
         case "3":
                 
-            descricaoAcao="Editar cliente: \n\n 1 - Jurídico \n 2 - Físico \n\n 9 - Voltar \n\n Resposta: "
+            descricaoAcao="Editar Cliente: \n\n 1 - Jurídico \n 2 - Físico \n\n 9 - Voltar \n\n Resposta: "
                 
             return descricaoAcao
 
         case "4":
             
-            descricaoAcao="Listar cliente: \n\n 1 - Jurídico \n 2 - Físico \n 3 - Todos \n\n 9 - Voltar \n\n Resposta: "
+            descricaoAcao="Listar Clientes: \n\n 1 - Jurídico \n 2 - Físico \n 3 - Todos \n\n 9 - Voltar \n\n Resposta: "
 
             return descricaoAcao
 
