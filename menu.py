@@ -34,31 +34,33 @@ def programa():
         
         print("Ação: ",descricaoAcao.split(":")[0],"\n\n")
         
-        # Seleção de classificação do Cliente
+        # Seleção de classificação do Cliente em caso de cadastro e listagem
 
-        classificacao = input(descricaoAcao)
-        print("\n")
-        
-        if classificacao=="9":
-            os.system("cls")
-            return "N"
+        if acao=="1" or acao=="4":
+            
+            classificacao = input(descricaoAcao)
+            print("\n")
+            
+            if classificacao=="9":
+                os.system("cls")
+                return "N"
 
-        if (acao!="4")&(classificacao=="3"):
-            print("\nClassificação Inválida!\n")
-            time.sleep(3)
-            os.system("cls")
-            return "N"
+            if (acao!="4")&(classificacao=="3"):
+                print("\nClassificação Inválida!\n")
+                time.sleep(3)
+                os.system("cls")
+                return "N"
 
-        descricaoClassificacao=obterDescricaoClassificacao(classificacao)
-        if descricaoClassificacao=="N":
+            descricaoClassificacao=obterDescricaoClassificacao(classificacao)
+            if descricaoClassificacao=="N":
+                os.system("cls")
+                return "N"
+            
             os.system("cls")
-            return "N"
-        
-        os.system("cls")
-        
-        print("Ação: ",descricaoAcao.split(":")[0])
-        print("Classificação: ",descricaoClassificacao,"\n")
-        
+            
+            print("Ação: ",descricaoAcao.split(":")[0])
+            print("Classificação: ",descricaoClassificacao,"\n")
+            
         # Match da ação seguir caminho de operação informado pelo usuário
 
         match(acao):
@@ -121,15 +123,50 @@ def programa():
                 os.system("cls")
                 return "N"
                     
+            # Caso a ação for igual a 2 segue o caminho para Excluir um cliente pelo seu ID    
+                
             case "2":
                 
-                print(acao)
-        
-                os.system("cls")
+                identificador = input("Identificador do cliente: ")
+                print("\n")
+                
+                flagAlteracao=0
+                
+                for index,cliente in enumerate(clientes):
+                    
+                    if cliente.getIdentificador()==identificador:
+                        
+                        confirmacao = input("Tem certeza que deseja deletar o cliente "+str(cliente.getNome())+" do cadastro?\n\n 1 - Sim \n 2 - Não \n\n Resposta: ")
+                        
+                        if (confirmacao!="1")&(confirmacao!="2"):
+                            print("\nOpção inválida!")
+                            time.sleep(3)
+                            os.system("cls")
+                        
+                        if confirmacao=="1":
+                            del clientes[index]
+                            flagAlteracao=1
+                        else:
+                            os.system("cls")
+                            return "N"
+                
+                if flagAlteracao==1:
+                    
+                    print("\nCliente excluído com sucesso.")
+                    time.sleep(3)
+                    os.system("cls")
+                    
+                else:
+                    print("\nCliente não encontrado.")
+                    time.sleep(3)
+                    os.system("cls")
+                    
+            # Caso a ação for igual a 3 segue o caminho para Editar um cliente existente
                 
             case "3":
                 
-                print(acao)
+                identificador = input("Identificador do cliente: ")
+                print("\n")
         
                 os.system("cls")
 
