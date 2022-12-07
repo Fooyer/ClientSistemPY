@@ -167,8 +167,70 @@ def programa():
                 
                 identificador = input("Identificador do cliente: ")
                 print("\n")
-        
-                os.system("cls")
+                
+                flagAlteracao = 0
+
+                for index,cliente in enumerate(clientes):
+
+                    if cliente.getIdentificador()==identificador:
+                        
+                        flagAlteracao = 1
+                        classificacaoCliente = cliente.getClassificacao()
+
+                        print("Se quiser deixar igual não passe nenhum valor.\n")
+
+                        nomeCliente = input("Nome do cliente ("+cliente.getNome()+"): ")
+                        if nomeCliente=="":
+                            nomeCliente=cliente.getNome()
+
+                        enderecoCliente = input("Endereço do cliente ("+cliente.getEndereco()+"): ")
+                        if enderecoCliente=="":
+                            enderecoCliente=cliente.getEndereco()
+
+                        emailCliente = input("Email do cliente ("+cliente.getEmail()+"): ")
+                        if emailCliente=="":
+                            emailCliente=cliente.getEmail()
+
+                        telefoneCliente = input("Telefone do cliente ("+cliente.getTelefone()+"): ")
+                        if telefoneCliente=="":
+                            telefoneCliente=cliente.getTelefone()
+
+
+                        if classificacaoCliente=="1":
+                            
+                            cnpjCliente = input("CNPJ do cliente ("+cliente.getCnpj()+"): ")
+                            if cnpjCliente=="":
+                                cnpjCliente=cliente.getCnpj()
+
+
+                            cliente.setCnpj(cnpjCliente)
+                            cliente.setEmail(emailCliente)
+                            cliente.setEndereco(enderecoCliente)
+                            cliente.setNome(nomeCliente)
+                            cliente.setTelefone(telefoneCliente)
+                            cliente.setIdentificador(identificador)
+                                                
+                        if classificacaoCliente=="2":
+                            
+                            cpfCliente = input("CPF do cliente ("+cliente.getCpf()+"): ")
+                            if cpfCliente=="":
+                                cpfCliente=cliente.getCpf()
+
+                            cliente.setCpf(cpfCliente)
+                            cliente.setEmail(emailCliente)
+                            cliente.setEndereco(enderecoCliente)
+                            cliente.setNome(nomeCliente)
+                            cliente.setTelefone(telefoneCliente)
+                            cliente.setIdentificador(identificador)
+                    
+                        print("\nCliente salvo com sucesso.")
+                        time.sleep(3)
+                        os.system("cls")
+                    
+                if flagAlteracao==0:
+                    print("\nCliente não encontrado.")
+                    time.sleep(3)
+                    os.system("cls")
 
             # Caso a ação for igual a 4 segue o caminho para listar os clientes
             
