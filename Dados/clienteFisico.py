@@ -5,7 +5,15 @@ from Dados.pessoa import pessoa
 class clienteFisico(pessoa):
     
     __cpf = None
-    __dados = []
+
+    def __init__(self,nomeCliente,enderecoCliente,emailCliente,telefoneCliente,cpfCliente,identificador):
+        
+        self.setCpf(cpfCliente)
+        self.setEmail(emailCliente)
+        self.setEndereco(enderecoCliente)
+        self.setNome(nomeCliente)
+        self.setTelefone(telefoneCliente)
+        self.setIdentificador(identificador)
     
     def setCpf(self,cpf):
 
@@ -14,18 +22,3 @@ class clienteFisico(pessoa):
     def getCpf(self):
 
         return self.__cpf
-    
-    def setDados(self):
-
-        nome = super().getNome()
-        email = super().getEmail()
-        endereco = super().getEndereco()
-        telefone = super().getTelefone()
-        
-        dados=nome+"\t"+self.__cpf+"\t"+email+"\t"+endereco+"\t"+telefone
-
-        self.__dados.append(dados)
-
-    def getDados(self):
-
-        return self.__dados

@@ -7,6 +7,15 @@ class pessoa:
     __endereco = None
     __email = None
     __telefone = None
+    __identificador = None
+    
+    def setIdentificador(self,identificador):
+
+        self.__identificador=identificador
+
+    def getIdentificador(self):
+
+        return self.__identificador
     
     def setNome(self,nome):
 

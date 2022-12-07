@@ -6,10 +6,7 @@ import time,os
 from Dados.clienteFisico import clienteFisico
 from Dados.clienteJuridico import clienteJuridico
 
-# Criar objetos das classes que serão utilizadas
-
-clienteJuridico=clienteJuridico()
-clienteFisico=clienteFisico()
+clientes = []
 
 # Função que faz o menu do programa
 
@@ -41,6 +38,13 @@ def programa():
             
             case "1":
                 
+                codigoIdentificador = input("Código de identificação: ")
+                statusCode=validarCodigoIdentificador(classificacao,codigoIdentificador)
+                if statusCode==0:
+                    print("\nCódigo de Identificador Já Utilizado!\n")
+                    time.sleep(3)
+                    return "N"
+
                 nomeCliente = input("Nome do cliente: ")
                 enderecoCliente = input("Endereço do cliente: ")
                 emailCliente = input("Email do cliente: ")
@@ -50,25 +54,13 @@ def programa():
                     
                     cnpjCliente = input("CNPJ do cliente: ")
 
-                    clienteJuridico.setCnpj(cnpjCliente)
-                    clienteJuridico.setEmail(emailCliente)
-                    clienteJuridico.setEndereco(enderecoCliente)
-                    clienteJuridico.setNome(nomeCliente)
-                    clienteJuridico.setTelefone(telefoneCliente)
+                    clientes.append(clienteJuridico(nomeCliente,enderecoCliente,emailCliente,telefoneCliente,cnpjCliente,codigoIdentificador))
 
-                    clienteJuridico.setDados()
-                
                 if (classificacao=="2"):
                     
                     cpfCliente = input("CPF do cliente: ")
                     
-                    clienteFisico.setCpf(cpfCliente)
-                    clienteFisico.setEmail(emailCliente)
-                    clienteFisico.setEndereco(enderecoCliente)
-                    clienteFisico.setNome(nomeCliente)
-                    clienteFisico.setTelefone(telefoneCliente)
-                    
-                    clienteFisico.setDados()
+                    clientes.append(clienteFisico(nomeCliente,enderecoCliente,emailCliente,telefoneCliente,cpfCliente,codigoIdentificador))
         
                 os.system("cls")
                     
@@ -94,29 +86,19 @@ def programa():
 # Função para imprimir clientes em tela da classificação informada
 
 def imprimirDados(classificacao):
-    
-    listaClientes = None
-    
-    if (classificacao=="1"):
+       
+    print('{0:20} | {1:20} | {2:30} | {3:30} | {4:20} | {5:40}'.format("ID","CNPJ","Nome","E-Mail","Telefone","Endereço"))
+    print("-"*150)
 
-        listaClientes=clienteJuridico.getDados()
+    for indice,cliente in enumerate(clientes):
 
-    if (classificacao=="2"):
-                
-        listaClientes=clienteFisico.getDados()
+        if cliente.getCnpj():
             
-    if (listaClientes==None):
-        print("\nNenhum cadastro encontrado!\n")
-        time.sleep(3)
-        return 0
-
-    for identificador,cliente in enumerate(listaClientes):
+            print('{0:20} | {1:20} | {2:30} | {3:30} | {4:20} | {5:40}'.format(str(cliente.getIdentificador()),str(cliente.getCnpj()),str(cliente.getNome()),str(cliente.getEmail()),str(cliente.getTelefone()),str(cliente.getEndereco())))
+        
+        elif cliente.getCpf():
             
-        print(identificador," - ",cliente)
-
-    print("\n")
-
-    return 1
+            print('{0:20} | {1:20} | {2:30} | {3:30} | {4:20} | {5:40}'.format(str(cliente.getIdentificador()),str(cliente.getCpf()),str(cliente.getNome()),str(cliente.getEmail()),str(cliente.getTelefone()),str(cliente.getEndereco())))
 
 # Match para definir a descrição da ação a apresentar na definição da classificação do cliente
 
@@ -154,9 +136,16 @@ def definirDescricao(acao):
             time.sleep(3)
             return 0
 
-# Executa o programa e faz o controle da saída
+def validarCodigoIdentificador(classificacao,codigoIdentificador):
+        
+    for indice,cliente in enumerate(clientes):
 
-pergunta=1
+        if codigoIdentificador==cliente.getIdentificador():
+            return 0
+        
+    return 1
+
+# Executa o programa e faz o controle da saída
 
 while True:
     sair=programa()

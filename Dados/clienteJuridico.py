@@ -5,8 +5,16 @@ from Dados.pessoa import pessoa
 class clienteJuridico(pessoa):
     
     __cnpj = None
-    __dados = []
     
+    def __init__(self,nomeCliente,enderecoCliente,emailCliente,telefoneCliente,cnpjCliente,identificador):
+        
+        self.setCnpj(cnpjCliente)
+        self.setEmail(emailCliente)
+        self.setEndereco(enderecoCliente)
+        self.setNome(nomeCliente)
+        self.setTelefone(telefoneCliente)
+        self.setIdentificador(identificador)
+
     def setCnpj(self,cnpj):
 
         self.__cnpj=cnpj
@@ -14,18 +22,3 @@ class clienteJuridico(pessoa):
     def getCnpj(self):
 
         return self.__cnpj
-    
-    def setDados(self):
-        
-        nome = super().getNome()
-        email = super().getEmail()
-        endereco = super().getEndereco()
-        telefone = super().getTelefone()
-
-        dados=nome+"\t"+self.__cnpj+"\t"+email+"\t"+endereco+"\t"+telefone
-
-        self.__dados.append(dados)
-
-    def getDados(self):
-
-        return self.__dados
