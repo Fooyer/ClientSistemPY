@@ -67,7 +67,12 @@ def programa():
             
             case "1":
                 
+                print("\nPara sair dê enter com um valor nulo.\n")
+                
                 codigoIdentificador = input("Código de identificação: ")
+                if codigoIdentificador=="":
+                    os.system("cls")
+                    return "N"
                 statusCode=validarCodigoIdentificador(codigoIdentificador)
                 if statusCode==0:
                     print("\nCódigo de Identificador Já Utilizado!\n")
@@ -75,19 +80,40 @@ def programa():
                     return "N"
 
                 nomeCliente = input("Nome do cliente: ")
+                if nomeCliente=="":
+                    os.system("cls")
+                    return "N"
+                
                 enderecoCliente = input("Endereço do cliente: ")
+                if enderecoCliente=="":
+                    os.system("cls")
+                    return "N"
+                
                 emailCliente = input("Email do cliente: ")
+                if emailCliente=="":
+                    os.system("cls")
+                    return "N"
+                
                 telefoneCliente = input("Telefone do cliente: ")
+                if telefoneCliente=="":
+                    os.system("cls")
+                    return "N"
 
                 if (classificacao=="1"):
                     
                     cnpjCliente = input("CNPJ do cliente: ")
-
+                    if cnpjCliente=="":
+                        os.system("cls")
+                        return "N"
+                    
                     clientes.append(clienteJuridico(nomeCliente,enderecoCliente,emailCliente,telefoneCliente,cnpjCliente,codigoIdentificador,classificacao))
 
                 if (classificacao=="2"):
                     
                     cpfCliente = input("CPF do cliente: ")
+                    if cpfCliente=="":
+                        os.system("cls")
+                        return "N"
                     
                     clientes.append(clienteFisico(nomeCliente,enderecoCliente,emailCliente,telefoneCliente,cpfCliente,codigoIdentificador,classificacao))
         
