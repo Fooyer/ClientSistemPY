@@ -115,7 +115,7 @@ def programa():
                 if (statusCode==0):
                     return "N"
                 
-                input("\n\nSair(Enter)")
+                input("\n\n Sair(Enter)")
                 os.system("cls")
                 return "N"
 
