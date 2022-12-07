@@ -67,7 +67,7 @@ def programa():
             
             case "1":
                 
-                print("\nPara sair dê enter com um valor nulo.\n")
+                print("\nPara cancelar dê enter com um valor nulo.\n")
                 
                 codigoIdentificador = input("Código de identificação: ")
                 if codigoIdentificador=="":
