@@ -76,7 +76,8 @@ def programa():
                 statusCode=validarCodigoIdentificador(codigoIdentificador)
                 if statusCode==0:
                     print("\nCódigo de Identificador Já Utilizado!\n")
-                    time.sleep(3)
+                    time.sleep(4)
+                    os.system("cls")
                     return "N"
 
                 nomeCliente = input("Nome do cliente: ")
